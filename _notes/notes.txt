@@ -1,0 +1,28 @@
+/***** Colors *****/
+yellow - star-color
+e7a93b
+232 169 60
+
+gray - star-disabled
+b8b8b8
+184 184 184
+
+gray - star-placeholder
+e1e1e1
+225 225 225
+
+* in example card *
+e6e6e6
+230 230 230
+
+dark gray - rating-popup
+3b3b3b
+59 59 59
+
+blue - focus
+479edd
+71 158 221
+
+/***** Border Radius *****/
+focus-border = 10px
+rating-popup-box = 8px

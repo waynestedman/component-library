@@ -1,0 +1,17 @@
+{
+  "name": "design-systems-platform-team-interview-case",
+  "version": "0.0.1",
+  "author": "Wayne Stedman",
+  "license": "MIT",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lit": "^2.2.2"
+  },
+  "devDependencies": {
+    "vite": "^2.9.5"
+  }
+}
