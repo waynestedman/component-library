@@ -3,6 +3,12 @@ import { customElement, property } from 'lit/decorators.js';
 // import star from './test.svg';
 // import starBold from './star-bold.svg';
 
+let halfStar: number = 0;
+let fullStars: number = 0; 
+const ratingOptions = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
+
+// move & adjust
+
 @customElement(`case-rating`)
 export class CaseRating extends LitElement {
   static styles = css`
@@ -17,9 +23,9 @@ export class CaseRating extends LitElement {
   `;
 
   @property({attribute: false})
-  starRating = {
+  starRating: { title: string, rating: number } ={
     title: 'Case Rating component',
-    rating: '4.5',
+    rating: 0,
   };
   starFill = {
     empty: '0%',
