@@ -1,7 +1,7 @@
 import { html, LitElement, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import star from './test.svg';
-import starBold from './star-bold.svg';
+// import star from './test.svg';
+// import starBold from './star-bold.svg';
 
 @customElement(`case-rating`)
 export class CaseRating extends LitElement {
