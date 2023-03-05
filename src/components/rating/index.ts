@@ -8,10 +8,8 @@ import './star.ts';
 // different than variant?
 // const clickableState: boolean = false;
 
-// let halfStar: number = 0;
-// let fullStars: number = 0;
-
-
+let lastFullStar: Number = 0;
+let halfStar: Number = 0;
 
 @customElement(`case-rating`)
 export class CaseRating extends LitElement {
@@ -68,26 +66,53 @@ export class CaseRating extends LitElement {
     `
   }
 
-  ratingMessage() {
+  ratingToStars() {
     let starRating = this.rating;
     let divisor: Number = Math.trunc(starRating);
     let remainder: Number = starRating % 1;
     
-    console.log(remainder);
+// console.log('remainder = ' + remainder);
 
     if (starRating % 1 != 0) {
+      lastFullStar = divisor - 1;
+// console.log('last full star = ' + lastFullStar);
+
+      halfStar = divisor;
+// console.log('half star = ' + halfStar);
+
       return html`
         Number of solid stars = ${divisor} <br>
         Rating remainder = ${remainder}
       `;
     } else {
+      halfStar = divisor;
+// console.log('lastFull = ' + lastFullStar);
+// console.log('halfstar = ' + halfStar);
       return html`it's a whole num = ${starRating}`;
+    } // if statement
+    
+  } // rating to stars
+
+  setStarStatus() {
+    let i: number = 0;
+    let fillStatus = [];
+
+    while (i < lastFullStar) {
+      fillStatus[i] = 'full';
+      i++;
+console.log(fillStatus[i]);
     }
-  }
+
+    fillStatus[halfStar] = 'half';
+
+    console.log('half star = ' + fillStatus[halfStar]);
+    } // set star status
 
   render() {
+    this.ratingToStars();
+    this.setStarStatus();
+
     return html`
-      ${this.ratingMessage()}
       ${this.headerTemplate()}
       ${this.ratingTemplate()}
     `;
