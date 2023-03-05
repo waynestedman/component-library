@@ -13,6 +13,7 @@ let halfStar: number = 0;
 let fullStars: number = 0;
 
 
+
 @customElement(`case-rating`)
 export class CaseRating extends LitElement {
   static styles = css`
@@ -55,6 +56,7 @@ export class CaseRating extends LitElement {
     none: 0,
   }
 
+  
   headerTemplate() {
     return html`<h2>${this.title}</h2>`;
   }
@@ -78,8 +80,23 @@ export class CaseRating extends LitElement {
     `
   }
 
+  ratingMessage() {
+    // let message;
+    
+    let starRating = this.rating;
+    let z: Number = starRating % 1;
+    console.log(z);
+
+    if (!starRating / 1) {
+      return html`Rating = ${z}`;
+    } else {
+      return html`${starRating}`;
+    }
+  }
+
   render() {
     return html`
+      ${this.ratingMessage()}
       ${this.headerTemplate()}
       ${this.ratingTemplate()}
     `;
