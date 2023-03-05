@@ -1,4 +1,4 @@
-import { html, LitElement, css, svg  } from 'lit';
+import { html, LitElement, css  } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import './star.ts';
 
