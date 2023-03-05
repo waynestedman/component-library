@@ -1,14 +1,14 @@
 /**
  * Do not edit directly
- * Generated on Fri, 03 Mar 2023 20:23:17 GMT
+ * Generated on Sat, 04 Mar 2023 23:04:47 GMT
  */
 
 :root {
-  --star-yellow: #e7a93b;
+  --star-yellow: #FDBF0F;
   --star-disabled: #b8b8b8;
   --star-placeholder: #e1e1e1;
   --rating-popup: #3b3b3b;
-  --focus: #479edd;
+  --focus: #00A3DA;
   --focus-border: 10px;
   --rating-popup-box: 8px;
   --token-set-order-0: ds-platform;
