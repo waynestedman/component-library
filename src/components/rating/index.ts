@@ -2,7 +2,7 @@ import { html, LitElement, css  } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import './star.ts';
 
-// TODO: limit ratings to only these
+// TODO: limit ratings to only these?
 // const ratingOptions = [0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
 
 // different than variant?
@@ -58,7 +58,7 @@ export class CaseRating extends LitElement {
         <rating-star class="star2" offset="100" opacity="1"></rating-star>
         <rating-star class="star3" offset="50" opacity="1"></rating-star>
         <rating-star class="star4" offset="0" opacity="0"></rating-star>
-        <rating-star class="star5" ></rating-star>
+        <rating-star class="star5"></rating-star>
       </div>
       <hr>
       <p><u>Info</u></p>
@@ -69,16 +69,19 @@ export class CaseRating extends LitElement {
   }
 
   ratingMessage() {
-    // let message;
-    
     let starRating = this.rating;
-    let z: Number = starRating % 1;
-    console.log(z);
+    let divisor: Number = Math.trunc(starRating);
+    let remainder: Number = starRating % 1;
+    
+    console.log(remainder);
 
-    if (!starRating / 1) {
-      return html`Rating remainder = ${z}`;
+    if (starRating % 1 != 0) {
+      return html`
+        Number of solid stars = ${divisor} <br>
+        Rating remainder = ${remainder}
+      `;
     } else {
-      return html`whole num = ${starRating}`;
+      return html`it's a whole num = ${starRating}`;
     }
   }
 
