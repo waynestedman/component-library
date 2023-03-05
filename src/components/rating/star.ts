@@ -4,10 +4,10 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement(`rating-star`)
 class Star extends LitElement {
   @property()
-    offset: Number = 0;
+    offset: Number = 0; // default value
 
   @property()
-    opacity: Number = 1;
+    opacity: Number = 1; // default value
 
 render() {
   return html`
