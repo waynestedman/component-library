@@ -49,6 +49,52 @@ export class CaseRating extends LitElement {
     return html`<h2>${this.title}</h2>`;
   }
 
+
+  ratingToStars() {
+    let starRating = this.rating;
+    let divisor: Number = Math.trunc(starRating);
+    let remainder: Number = starRating % 1;
+    
+    if (starRating % 1 != 0) {
+      lastFullStar = divisor - 1;
+      halfStar = divisor;
+
+    //   return html`
+    //   Number of solid stars = ${lastFullStar} <br>
+    //   Number of half stars = ${divisor} <br>
+    //   Rating remainder = ${remainder}
+    // `;
+  
+    } else {
+      lastFullStar = divisor;
+      halfStar = 0;
+
+    //   return html`
+    //   Number of solid stars = ${lastFullStar} <br>
+    //   Number of half stars = ${divisor} <br>
+    //   Rating remainder = ${remainder}
+    // `;
+  
+    } // if statement
+    
+
+  } // rating to stars
+
+  setStarStatus() {
+    let fillStatus: string[] = [];
+
+    for (let i = 1; i <= 5; i++) {
+      if (i <= lastFullStar) {
+        fillStatus[i] = 'full';
+      } else if (i === halfStar) {
+          fillStatus[i] = 'half';
+        } else {
+          fillStatus[i] = 'empty';
+        }
+    console.log('fill status of ' + i + ' = ' + fillStatus[i]);
+    } // for loop
+  } // set star status
+
   ratingTemplate() {
     return html`
       <div class="star-rating">
@@ -65,49 +111,6 @@ export class CaseRating extends LitElement {
       <caption>rating: ${this.rating}</caption>
     `
   }
-
-  ratingToStars() {
-    let starRating = this.rating;
-    let divisor: Number = Math.trunc(starRating);
-    let remainder: Number = starRating % 1;
-    
-// console.log('remainder = ' + remainder);
-
-    if (starRating % 1 != 0) {
-      lastFullStar = divisor - 1;
-// console.log('last full star = ' + lastFullStar);
-
-      halfStar = divisor;
-// console.log('half star = ' + halfStar);
-
-      return html`
-        Number of solid stars = ${divisor} <br>
-        Rating remainder = ${remainder}
-      `;
-    } else {
-      halfStar = divisor;
-// console.log('lastFull = ' + lastFullStar);
-// console.log('halfstar = ' + halfStar);
-      return html`it's a whole num = ${starRating}`;
-    } // if statement
-    
-  } // rating to stars
-
-  setStarStatus() {
-    let i: number = 0;
-    let fillStatus = [];
-
-    for (let i = 0; i < 5; i++) {
-      if (i < lastFullStar) {
-        fillStatus[i] = 'full';
-      } else if (i = halfStar) {
-          fillStatus[i] = 'half';
-        } else {
-          fillStatus[i] = 'empty';
-        }
-    console.log('fill status =' + fillStatus[i]);
-    }
-  } // set star status
 
   render() {
     this.ratingToStars();
