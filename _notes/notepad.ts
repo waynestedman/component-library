@@ -13,3 +13,14 @@ for (i < lastFullStar) {
 }
 
 fillStatus[halfStar] = 'half';
+
+/*-------------------- */
+for (let i = 0; i < 5; i++) {
+  if (i < lastFullStar) {
+    fillStatus[i] = 'full';
+  } else if (i = half) {
+      fillStatus[i] = 'half';
+    } else {
+      fillStatus[i] = 'empty';
+    }
+}

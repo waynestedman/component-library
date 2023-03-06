@@ -97,16 +97,17 @@ export class CaseRating extends LitElement {
     let i: number = 0;
     let fillStatus = [];
 
-    while (i < lastFullStar) {
-      fillStatus[i] = 'full';
-      i++;
-console.log(fillStatus[i]);
+    for (let i = 0; i < 5; i++) {
+      if (i < lastFullStar) {
+        fillStatus[i] = 'full';
+      } else if (i = halfStar) {
+          fillStatus[i] = 'half';
+        } else {
+          fillStatus[i] = 'empty';
+        }
+    console.log('fill status =' + fillStatus[i]);
     }
-
-    fillStatus[halfStar] = 'half';
-
-    console.log('half star = ' + fillStatus[halfStar]);
-    } // set star status
+  } // set star status
 
   render() {
     this.ratingToStars();
