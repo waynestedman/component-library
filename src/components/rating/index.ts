@@ -13,6 +13,9 @@ let halfStar: Number = 0;
 
 @customElement(`case-rating`)
 export class CaseRating extends LitElement {
+  offset: Number = 0;
+  opacity: Number = 0;
+
   static styles = css`
     h2 {
       color: var(--focus);
@@ -48,7 +51,6 @@ export class CaseRating extends LitElement {
   headerTemplate() {
     return html`<h2>${this.title}</h2>`;
   }
-
 
   ratingToStars() {
     let starRating = this.rating;
@@ -98,11 +100,11 @@ export class CaseRating extends LitElement {
   ratingTemplate() {
     return html`
       <div class="star-rating">
-        <rating-star class="star1" offset="100" opacity="1"></rating-star>
-        <rating-star class="star2" offset="100" opacity="1"></rating-star>
-        <rating-star class="star3" offset="50" opacity="1"></rating-star>
-        <rating-star class="star4" offset="0" opacity="0"></rating-star>
-        <rating-star class="star5"></rating-star>
+        <rating-star class="star1" fillStatus1 offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star2" offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star3" offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star4" offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star5" offset=${this.offset} opacity=${this.opacity}></rating-star>
       </div>
       <hr>
       <p><u>Info</u></p>

@@ -24,3 +24,13 @@ for (let i = 0; i < 5; i++) {
       fillStatus[i] = 'empty';
     }
 }
+
+/*-------------------- */
+
+if (fillStatus[i] == 'full') {
+  this.setAttribute(offset === 100);
+  this.setAttribute(opacity === 1);
+} else if (fillStatus[i] == 'half') {
+  this.setAttribute(offset === 50);
+  this.setAttribute(opacity === 1);
+}
