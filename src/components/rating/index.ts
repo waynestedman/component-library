@@ -13,9 +13,6 @@ let halfStar: Number = 0;
 
 @customElement(`case-rating`)
 export class CaseRating extends LitElement {
-  offset: Number = 0;
-  opacity: Number = 0;
-
   static styles = css`
     h2 {
       color: var(--focus);
@@ -46,6 +43,12 @@ export class CaseRating extends LitElement {
   variant: String = 'display'; // default value
 
   @property()
+  offset: Number = 0;
+
+  @property()
+  opacity: Number = 0;
+
+  @property()
   title: string = 'Case Rating component';
 
   headerTemplate() {
@@ -60,32 +63,18 @@ export class CaseRating extends LitElement {
     if (starRating % 1 != 0) {
       lastFullStar = divisor - 1;
       halfStar = divisor;
-
-    //   return html`
-    //   Number of solid stars = ${lastFullStar} <br>
-    //   Number of half stars = ${divisor} <br>
-    //   Rating remainder = ${remainder}
-    // `;
-  
     } else {
       lastFullStar = divisor;
       halfStar = 0;
-
-    //   return html`
-    //   Number of solid stars = ${lastFullStar} <br>
-    //   Number of half stars = ${divisor} <br>
-    //   Rating remainder = ${remainder}
-    // `;
-  
     } // if statement
     
 
   } // rating to stars
 
   setStarStatus() {
-    const stars = document.getElementsByClassName('star')
     let fillStatus: string[] = [];
-    // let starStatus: Number[] = [];
+    let starStatus = fillStatus;
+
 
     for (let i = 1; i <= 5; i++) {
       if (i <= lastFullStar) {
@@ -95,21 +84,28 @@ export class CaseRating extends LitElement {
         } else {
           fillStatus[i] = 'empty';
         }
-
-      if (fillStatus[i] == 'full') {
-        stars[i].setAttribute('offset', '100');
-        stars[i].setAttribute('opacity', '1');
-      } else if (fillStatus[i] == 'half') {
-          stars[i].setAttribute('offset', '50');
-          stars[i].setAttribute('opacity', '1');
-        }
-
-    console.log('fill status of ' + i + ' = ' + fillStatus[i]);
-
+      
+        if (fillStatus[i] == 'full') {
+          this.offset = 0;
+          this.opacity = 1;
+        } else if (fillStatus[i] == 'half') {
+            this.offset = 50;
+            this.opacity = 1;
+          } else {
+            this.offset = 0;
+            this.opacity = 0;
+          }
+  
     } // for loop
+    // console.log('fill status of ' + i + ' = ' + fillStatus[i]);
+
+    starStatus.forEach(() => {
+    });
+ 
+
   }
 
-  ratingTemplate() {
+  ratingTemplate() {   
     return html`
       <div class="star-rating">
         <rating-star class="star star1" starStatus1 offset=${this.offset} opacity=${this.opacity}></rating-star>

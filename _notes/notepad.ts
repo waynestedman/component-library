@@ -35,3 +35,10 @@ if (stars.starStatus[i] && fillStatus[i] == 'full') {
   this.setAttribute('offset', 50);
   this.setAttribute('opacity', 1);
 }
+
+/*-------------------- */
+getStars() {
+  const stars = Array.from(document.querySelector('case-rating').shadowRoot.querySelectorAll('.star'));
+  console.log('stars' + stars);
+
+}
