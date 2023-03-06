@@ -83,7 +83,9 @@ export class CaseRating extends LitElement {
   } // rating to stars
 
   setStarStatus() {
+    const stars = document.getElementsByClassName('star')
     let fillStatus: string[] = [];
+    // let starStatus: Number[] = [];
 
     for (let i = 1; i <= 5; i++) {
       if (i <= lastFullStar) {
@@ -93,18 +95,28 @@ export class CaseRating extends LitElement {
         } else {
           fillStatus[i] = 'empty';
         }
+
+      if (fillStatus[i] == 'full') {
+        stars[i].setAttribute('offset', '100');
+        stars[i].setAttribute('opacity', '1');
+      } else if (fillStatus[i] == 'half') {
+          stars[i].setAttribute('offset', '50');
+          stars[i].setAttribute('opacity', '1');
+        }
+
     console.log('fill status of ' + i + ' = ' + fillStatus[i]);
+
     } // for loop
-  } // set star status
+  }
 
   ratingTemplate() {
     return html`
       <div class="star-rating">
-        <rating-star class="star1" fillStatus1 offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star2" offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star3" offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star4" offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star5" offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star star1" starStatus1 offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star star2" starStatus2 offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star star3" starStatus3 offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star star4" starStatus4 offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star star5" starStatus5 offset=${this.offset} opacity=${this.opacity}></rating-star>
       </div>
       <hr>
       <p><u>Info</u></p>

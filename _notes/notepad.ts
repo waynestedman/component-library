@@ -26,11 +26,12 @@ for (let i = 0; i < 5; i++) {
 }
 
 /*-------------------- */
+const stars = document.getElementsByClassName('star')
 
-if (fillStatus[i] == 'full') {
-  this.setAttribute(offset === 100);
-  this.setAttribute(opacity === 1);
-} else if (fillStatus[i] == 'half') {
-  this.setAttribute(offset === 50);
-  this.setAttribute(opacity === 1);
+if (stars.starStatus[i] && fillStatus[i] == 'full') {
+  this.setAttribute('offset', 100);
+  this.setAttribute('opacity', 1);
+} else if (stars.starStatus[i] && fillStatus[i] == 'half') {
+  this.setAttribute('offset', 50);
+  this.setAttribute('opacity', 1);
 }
