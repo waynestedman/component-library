@@ -7,25 +7,30 @@
     <script type="module" src="/src/components/index.ts"></script>
     <link rel="stylesheet" href="./src/tokens/tokens.css">
     <link rel="stylesheet" href="https://assets.lego.com/fonts/v1/cera-pro.css">
-    <style>
-      html,
-      body {
-        font-family: 'Cera Pro';
-        margin: 0;
-        padding: 0;
-        color: var(--rating-popup);
-      }
-      h1 {
-        color: var(--focus);
-        font-size: 2.6rem;
-        text-align: center;
-      }
-    </style>
+    <link rel="stylesheet" href="page-styles.css">
   </head>
   <body>
-    <h1>Case Rating component</h1>
+    <h1>Case Study - Rating component</h1>
     <!-- your component here -->
-    <case-rating rating="3" size="s" variant="Display"></case-rating>
-    <case-rating rating="4.5" size="l" variant="Clickable"></case-rating>
+    <section id="display-product">
+      <h2>Product Display example</h2>
+      <div class="card">
+        <img src="./src/assets/10283_shuttle_discovery.jpg" alt="Image of Lego Suttle Discovery product box">
+        <p>NASA Space Shuttle Discovery</p>
+        <caption>Available now</caption>
+        <case-rating rating="3" size="s" variant="Display"></case-rating>
+      </div>
+    </section>
+    <section id="rate-experience">
+      <div class="card">
+        <h3>W've received your registration</h3>
+        <p>We value your input and would appreciate it if you took the time to rate your experience.</p> 
+        <case-rating rating="4.5" size="l" variant="Clickable"></case-rating>
+        <p>Any additional comments?</p>
+        <!-- text box -->
+        <button id="no">No thanks</button>
+        <button id="yes">Submit</button>
+      </div>
+    </section>
   </body>
 </html>

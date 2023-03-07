@@ -1,0 +1,23 @@
+/* Styles for the elements on the enclosing page (aka index.html */
+
+html,
+body {
+  font-family: 'Cera Pro';
+  margin: 0;
+  padding: 0;
+  color: var(--rating-popup);
+}
+
+h1 {
+  color: var(--focus);
+  font-size: 2.6rem;
+  text-align: center;
+}
+
+#display-product {
+  max-width: 48%;
+}
+
+#rate-experience {
+  max-width: 48%;
+}
