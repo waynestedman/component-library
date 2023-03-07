@@ -1,5 +1,5 @@
 import { html, LitElement, css  } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { customElement, property, query } from 'lit/decorators.js';
 import './star.ts';
 
 // TODO: limit ratings to only these?
@@ -14,22 +14,38 @@ let halfStar: Number = 0;
 @customElement(`case-rating`)
 export class CaseRating extends LitElement {
   static styles = css`
-    h2 {
-      color: var(--focus);
-      font-size: 2rem;
+    :host {
+      display: inline-block;
+      margin-inline: 1rem;
+      width: 40%;
     }
-    caption {
-      color: var(--rating-popup);
-      font-size: 1rem;
+    h2 {
+      font-size: 1.6rem;
+      margin-block: 0.5rem;
+      padding: 0;
+    }
+    p {
+      margin-block: 0;
+      padding: 0;
     }
     .star-rating {
       position: relative;
-      margin: 0.5rem;
+      margin-block: 0.5rem;
+      padding: 0.25rem;
       background-color: lightgreen;
-      width: fit-content;
+      /* width: auto; */
+    }
+    .star-rating:focus {
+      border: 2px solid var(--focus);
+      border-radius: var(--focus-border);
+      padding: 0.25rem;
     }
     svg {
       padding-inline: 0.5rem;
+    }
+    #staticRating {
+      display: inline-block;
+      margin-left: 0.25rem;
     }
   `;
 
@@ -37,22 +53,38 @@ export class CaseRating extends LitElement {
   rating: Number = 3; // default value
 
   @property()
-  size: String = 'med'; // default value
+  size: String = 'l'; // default value
+
+  @property()
+  sizeNum: Number = 16; // default is 16 or small size
 
   @property()
   variant: String = 'display'; // default value
 
   @property()
-  offset: Number = 0;
-
-  @property()
-  opacity: Number = 0;
-
-  @property()
   title: string = 'Case Rating component';
 
-  headerTemplate() {
-    return html`<h2>${this.title}</h2>`;
+  @property()
+  condition = false;
+
+  // @query('.star-rating')
+  // _starRating!: NodeListOf<HTMLElementTagNameMap>;
+  setStarSize() {
+    let starSize = this.size;
+  
+    console.log(starSize);
+
+    if (starSize == 'l') {
+      this.sizeNum = 24;
+    } else if (starSize == 'm') {
+      this.sizeNum = 20;
+    } else {
+        this.sizeNum = 16;
+      }
+
+      console.log('parent star size = ' + starSize);
+      console.log('parent size # = ' + this.sizeNum);
+
   }
 
   ratingToStars() {
@@ -73,7 +105,7 @@ export class CaseRating extends LitElement {
 
   setStarStatus() {
     let fillStatus: string[] = [];
-    let starStatus = fillStatus;
+    // let starStatus = fillStatus;
 
 
     for (let i = 1; i <= 5; i++) {
@@ -85,44 +117,64 @@ export class CaseRating extends LitElement {
           fillStatus[i] = 'empty';
         }
       
-        if (fillStatus[i] == 'full') {
-          this.offset = 0;
-          this.opacity = 1;
-        } else if (fillStatus[i] == 'half') {
-            this.offset = 50;
-            this.opacity = 1;
-          } else {
-            this.offset = 0;
-            this.opacity = 0;
-          }
-  
+      // if (fillStatus[i] == 'empty') {
+      //   console.log(fillStatus[i]);
+      //   this.offset = 100;
+      //   this.opacity = 1;
+      // } else if (fillStatus[i] == 'half') {
+      //     this.offset = 50;
+      //     this.opacity = 1;
+      //   } else {
+      //     this.offset = 10;
+      //     this.opacity = 0;
+      //   }
+      // console.log('fill status of ' + i + ' = ' + fillStatus[i]);
+      // console.log('star status of ' + i + ' = ' + starStatus[i]);
+      
     } // for loop
-    // console.log('fill status of ' + i + ' = ' + fillStatus[i]);
 
-    starStatus.forEach(() => {
-    });
+    // starStatus.forEach(() => {
+    // });
  
 
   }
 
-  ratingTemplate() {   
+  headerTemplate() {
     return html`
-      <div class="star-rating">
-        <rating-star class="star star1" starStatus1 offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star star2" starStatus2 offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star star3" starStatus3 offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star star4" starStatus4 offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star star5" starStatus5 offset=${this.offset} opacity=${this.opacity}></rating-star>
-      </div>
-      <hr>
-      <p><u>Info</u></p>
+      <h2>${this.variant} component example</h2>
+      <p><u>Info from component props:</u></p>
       <p>size: ${this.size}</p>
       <p>variant: ${this.variant}</p>
-      <caption>rating: ${this.rating}</caption>
+      <p>rating: ${this.rating}</p>
+    `;
+  }
+
+  ratingTemplate() {
+    
+    if (this.variant == 'Display') {
+      this.condition = true;
+    }
+    this.setStarSize();
+
+    return html`
+      <div class="star-rating" aria-describedby="This section displays a star rating">
+        <rating-star class="star star1" offset=100 opacity=1></rating-star>
+        <rating-star class="star star2" offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star star3" offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star star4" offset=${this.offset} opacity=${this.opacity}></rating-star>
+        <rating-star class="star star5" offset=${this.offset} opacity=${this.opacity}></rating-star>
+        ${this.condition
+          ? html`
+            <p id="staticRating" aria-describedby="This product's rating is ${this.rating} out of 5"><strong>${this.rating}</strong> (5.0)</p>
+          `
+          : html ``}
+      </div>
+      
     `
   }
 
   render() {
+    
     this.ratingToStars();
     this.setStarStatus();
 

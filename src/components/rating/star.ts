@@ -4,14 +4,42 @@ import { customElement, property } from 'lit/decorators.js';
 @customElement(`rating-star`)
 class Star extends LitElement {
   @property()
+    size: String = 'l'; // default value
+
+  @property()
     offset: Number = 0; // default value
 
   @property()
     opacity: Number = 1; // default value
 
+  // @property()
+  // starSize: String = '';
+
+  @property()
+  sizeNum: Number = 16; // default is 16 or small size
+  
+  // setSize() {
+  //   let starSize = this.size;
+
+  //   if (starSize == 'l') {
+  //     this.sizeNum = 24;
+  //   } else if (starSize == 'm') {
+  //     this.sizeNum = 20;
+  //   } else {
+  //       this.sizeNum = 16;
+  //     }
+
+  //     console.log(starSize);
+  //     console.log(this.sizeNum);
+
+  // }
+  
+ 
 render() {
+  // this.setSize();
+
   return html`
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="${this.sizeNum}" height="${this.sizeNum}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="grad">
           <stop offset="${this.offset}%" stop-color="var(--star-yellow)" stop-opacity="${this.opacity}"/>

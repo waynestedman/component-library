@@ -11,12 +11,21 @@
       html,
       body {
         font-family: 'Cera Pro';
+        margin: 0;
+        padding: 0;
+        color: var(--rating-popup);
+      }
+      h1 {
+        color: var(--focus);
+        font-size: 2.6rem;
+        text-align: center;
       }
     </style>
   </head>
   <body>
     <h1>Case Rating component</h1>
     <!-- your component here -->
-    <case-rating rating="5" size="lg" variant="display"></case-rating>
+    <case-rating rating="3" size="s" variant="Display"></case-rating>
+    <case-rating rating="4.5" size="l" variant="Clickable"></case-rating>
   </body>
 </html>
