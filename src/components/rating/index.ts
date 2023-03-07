@@ -150,19 +150,22 @@ export class CaseRating extends LitElement {
   }
 
   ratingTemplate() {
-    
+    // const stars = Array.from(document.querySelector('case-rating').shadowRoot.querySelectorAll('.star'));
+    let ariaHidden: Boolean = false;
+
     if (this.variant == 'Display') {
       this.condition = true;
+      this.ariaHidden = true;
     }
     this.setStarSize();
 
     return html`
-      <div class="star-rating" aria-describedby="This section displays a star rating">
-        <rating-star class="star star1" offset=100 opacity=1></rating-star>
-        <rating-star class="star star2" offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star star3" offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star star4" offset=${this.offset} opacity=${this.opacity}></rating-star>
-        <rating-star class="star star5" offset=${this.offset} opacity=${this.opacity}></rating-star>
+      <div class="star-rating" aria-describedby="This section displays a star rating" aria-hidden="false">
+        <rating-star class="star star1" offset=100 opacity=1 aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star class="star star2" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star class="star star3" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star class="star star4" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star class="star star5" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
         ${this.condition
           ? html`
             <p id="staticRating" aria-describedby="This product's rating is ${this.rating} out of 5"><strong>${this.rating}</strong> (5.0)</p>
