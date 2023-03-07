@@ -20,18 +20,27 @@ h3 {
   font-size: 1.2rem;
 }
 
+.column-container {
+  display: flex;
+  width: 100%;
+}
+.column {
+  flex: 1;
+  padding: 1rem;
+}
+
 .card {
   background-color: #fff;
   border: 1px solid var(--rating-popup);
-
+  max-width: 550px;
+  margin-inline: auto;
+  vertical-align: middle;
 }
 
 #display-product {
   display: inline-block;
   background-color: var(--star-disabled);
-  width: 48%;
-  height: ;
-  padding: 1rem;
+  margin-right: 6px;
 
   .card {
     margin-inline: auto;
@@ -47,7 +56,7 @@ h3 {
     
     p {
       margin: 0;
-      // padding: 0;
+      color: var(--product-status);
     }
   }
 }
@@ -56,8 +65,6 @@ h3 {
   position: relative;
   display: inline-block;
   background-color: var(--star-disabled);
-  width: 48%;
-  padding: 1rem;
 
   .card {
     position: relative;
@@ -80,12 +87,14 @@ h3 {
 
       input {
         background: none;
-        border: 2px solid var(--rating-popup);
+        color: var(--button-blue);
+        border: 2px solid var(--button-blue);
+        margin-top: 1rem;
         padding: 0.5rem;
         cursor: pointer;
       
         &:nth-child(2){
-          background-color: var(--star-disabled);
+          background-color: var(--button-inactive);
           color: #fff;
         }
       }
