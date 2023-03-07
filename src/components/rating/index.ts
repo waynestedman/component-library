@@ -32,10 +32,10 @@ export class CaseRating extends LitElement {
     }
     .star-rating {
       position: relative;
+      display: block;
       margin-block: 0.5rem;
       padding: 0.25rem;
-      background-color: lightgreen;
-      /* width: auto; */
+      width: 200px;
     }
     .star-rating:focus {
       border: 2px solid var(--focus);
@@ -141,15 +141,15 @@ export class CaseRating extends LitElement {
 
   }
 
-  headerTemplate() {
-    return html`
-      <h2>${this.variant} component example</h2>
-      <p><u>Info from component props:</u></p>
-      <p>size: ${this.size}</p>
-      <p>variant: ${this.variant}</p>
-      <p>rating: ${this.rating}</p>
-    `;
-  }
+  // headerTemplate() {
+  //   return html`
+  //     <h2>${this.variant} component example</h2>
+  //     <p><u>Info from component props:</u></p>
+  //     <p>size: ${this.size}</p>
+  //     <p>variant: ${this.variant}</p>
+  //     <p>rating: ${this.rating}</p>
+  //   `;
+  // }
 
   ratingTemplate() {
     // let star = Array.from(document.querySelector('case-rating').shadowRoot.querySelectorAll('div.star-rating'));
@@ -185,7 +185,6 @@ export class CaseRating extends LitElement {
     this.setStarStatus();
 
     return html`
-      ${this.headerTemplate()}
       ${this.ratingTemplate()}
     `;
   }
