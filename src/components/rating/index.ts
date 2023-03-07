@@ -1,5 +1,5 @@
 import { html, LitElement, css  } from 'lit';
-import { customElement, property, query } from 'lit/decorators.js';
+import { customElement, property, eventOptions } from 'lit/decorators.js';
 import './star.ts';
 
 // TODO: limit ratings to only these?
@@ -13,6 +13,8 @@ let halfStar: Number = 0;
 
 @customElement(`case-rating`)
 export class CaseRating extends LitElement {
+  clicked = false;
+
   static styles = css`
     :host {
       display: inline-block;
@@ -150,34 +152,35 @@ export class CaseRating extends LitElement {
   }
 
   ratingTemplate() {
-    // const stars = Array.from(document.querySelector('case-rating').shadowRoot.querySelectorAll('.star'));
+    // let star = Array.from(document.querySelector('case-rating').shadowRoot.querySelectorAll('div.star-rating'));
     let ariaHidden: Boolean = false;
 
     if (this.variant == 'Display') {
       this.condition = true;
       this.ariaHidden = true;
+      this.removeEventListener('click', this._onClick, {capture: true});
+      // this.removeClick();
     }
+  
     this.setStarSize();
 
     return html`
       <div class="star-rating" aria-describedby="This section displays a star rating" aria-hidden="false">
-        <rating-star class="star star1" offset=100 opacity=1 aria-hidden="${this.ariaHidden || false}"></rating-star>
-        <rating-star class="star star2" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
-        <rating-star class="star star3" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
-        <rating-star class="star star4" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
-        <rating-star class="star star5" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star @click=${this._onClick} class="star star1" offset=100 opacity=1 aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star @click=${this._onClick} class="star star2" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star @click=${this._onClick} class="star star3" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star @click=${this._onClick} class="star star4" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star @click=${this._onClick} class="star star5" offset=${this.offset} opacity=${this.opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
         ${this.condition
           ? html`
             <p id="staticRating" aria-describedby="This product's rating is ${this.rating} out of 5"><strong>${this.rating}</strong> (5.0)</p>
           `
           : html ``}
       </div>
-      
-    `
+    `;
   }
 
   render() {
-    
     this.ratingToStars();
     this.setStarStatus();
 
@@ -185,6 +188,18 @@ export class CaseRating extends LitElement {
       ${this.headerTemplate()}
       ${this.ratingTemplate()}
     `;
+  }
+
+  @eventOptions({capture: true})
+    _onClick(e) {
+    this.clicked = true;
+    console.log(this.clicked);
+  }
+
+  removeClick() {
+    this.removeEventListener('click', this._onClick, {capture: true})
+    this.clicked = false;
+    console.log(this.clicked);
   }
 }
 
