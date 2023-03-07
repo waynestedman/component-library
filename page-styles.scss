@@ -13,7 +13,9 @@ h1 {
   font-size: 2.6rem;
   text-align: center;
 }
-
+h2 {
+  text-align: center;
+}
 h3 {
   font-size: 1.2rem;
 }
@@ -27,10 +29,12 @@ h3 {
 #display-product {
   display: inline-block;
   background-color: var(--star-disabled);
-  max-width: 48%;
+  width: 48%;
+  height: ;
   padding: 1rem;
 
   .card {
+    margin-inline: auto;
     width: 250px;
     padding-inline: 0.5rem;
 
@@ -52,7 +56,7 @@ h3 {
   position: relative;
   display: inline-block;
   background-color: var(--star-disabled);
-  max-width: 48%;
+  width: 48%;
   padding: 1rem;
 
   .card {

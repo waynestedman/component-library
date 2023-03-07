@@ -12,29 +12,33 @@
   <body>
     <h1>Case Study - Rating component</h1>
     <!-- your component here -->
-    <section id="display-product">
-      <h2>Product Display example</h2>
-      <div class="card">
-        <img src="./src/assets/10283_shuttle_discovery.jpg" alt="Image of Lego Suttle Discovery product box">
-        <h3><strong>NASA Space Shuttle Discovery</strong></h3>
-        <p>Available now</p>
-        <case-rating rating="3" size="s" variant="Display"></case-rating>
-      </div>
-    </section>
-    <section id="rate-experience">
-      <div class="card">
-        <h3><strong>We've received your registration</strong></h3>
-        <p>We value your input and would appreciate it if you took the time to rate your experience.</p> 
-        <case-rating rating="4.5" size="l" variant="Clickable"></case-rating>
-        <form action="">
-          <p><label for="productreview">Any additional comments?</label></p>
-          <textarea id="productreview" name="productreview" rows="4" cols="50">Enter your comments here</textarea>
-          <div class="options-buttons">
-            <input type="submit" id="no" value="No thanks">
-            <input type="submit" id="yes" value="Submit">  
-          </div>
-        </form>
-      </div>
-    </section>
+    <main class="column-container">
+      <section id="display-product" class="column">
+        <h2>Product Display example</h2>
+        <div class="card">
+          <img src="./src/assets/10283_shuttle_discovery.jpg" alt="Image of Lego Suttle Discovery product box">
+          <h3><strong>NASA Space Shuttle Discovery</strong></h3>
+          <p>Available now</p>
+          <case-rating rating="3" size="s" variant="Display"></case-rating>
+        </div>
+      </section>
+      <section id="rate-experience" class="column">
+        <h2>Rate your experience example</h2>
+        <div class="card">
+          <h3><strong>We've received your registration</strong></h3>
+          <p>We value your input and would appreciate it if you took the time to rate your experience.</p> 
+          <case-rating rating="4.5" size="l" variant="Clickable"></case-rating>
+          <form action="">
+            <p><label for="productreview">Any additional comments?</label></p>
+            <textarea id="productreview" name="productreview" rows="4" cols="50">Enter your comments here</textarea>
+            <div class="options-buttons">
+              <input type="submit" id="no" value="No thanks">
+              <input type="submit" id="yes" value="Submit">  
+            </div>
+          </form>
+        </div>
+      </section>
+  
+    </main>
   </body>
 </html>
