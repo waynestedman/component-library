@@ -101,3 +101,10 @@ h3 {
     }
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  // switch layout to column for iPad & smaller
+  .column-container {
+    flex-direction: column;
+  }
+}
