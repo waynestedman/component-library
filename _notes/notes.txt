@@ -49,3 +49,28 @@ dark gray - rating-popup
 blue - focus
 479edd
 71 158 221
+
+
+ // headerTemplate() {
+  //   return html`
+  //     <h2>${this.variant} component example</h2>
+  //     <p><u>Info from component props:</u></p>
+  //     <p>size: ${this.size}</p>
+  //     <p>variant: ${this.variant}</p>
+  //     <p>rating: ${this.rating}</p>
+  //   `;
+  // }
+
+        // if (fillStatus[i] == 'empty') {
+      //   console.log(fillStatus[i]);
+      //   this.offset = 100;
+      //   this.opacity = 1;
+      // } else if (fillStatus[i] == 'half') {
+      //     this.offset = 50;
+      //     this.opacity = 1;
+      //   } else {
+      //     this.offset = 10;
+      //     this.opacity = 0;
+      //   }
+      // console.log('fill status of ' + i + ' = ' + fillStatus[i]);
+      // console.log('star status of ' + i + ' = ' + starStatus[i]);

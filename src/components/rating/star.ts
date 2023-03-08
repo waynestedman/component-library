@@ -1,48 +1,43 @@
-import { LitElement, html } from 'lit';
+import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
 @customElement(`rating-star`)
 class Star extends LitElement {
-  @property()
-    size: String = 'l'; // default value
+  static styles = css`
+    :host {
+      cursor: pointer;
+    }
+  `;
 
   @property()
-    offset: Number = 0; // default value
+  starSize: String = 's'; // default value
 
   @property()
-    opacity: Number = 1; // default value
-
-  // @property()
-  // starSize: String = '';
+  sizeNum: Number = 16; // default is 16 or small size 
 
   @property()
-  sizeNum: Number = 16; // default is 16 or small size
-  
-  // setSize() {
-  //   let starSize = this.size;
+  _offset: Number = 100;
+  _opacity: Number = 1;
 
-  //   if (starSize == 'l') {
-  //     this.sizeNum = 24;
-  //   } else if (starSize == 'm') {
-  //     this.sizeNum = 20;
-  //   } else {
-  //       this.sizeNum = 16;
-  //     }
-
-  //     console.log(starSize);
-  //     console.log(this.sizeNum);
-
-  // }
+  setSize() {
+    if (this.starSize == 'l') {
+      this.sizeNum = 24;
+    } else if (this.starSize == 'm') {
+      this.sizeNum = 20;
+    } else {
+      this.sizeNum = 16;
+    }
+  }
   
  
 render() {
-  // this.setSize();
+  this.setSize();
 
   return html`
     <svg width="${this.sizeNum}" height="${this.sizeNum}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="grad">
-          <stop offset="${this.offset}%" stop-color="var(--star-yellow)" stop-opacity="${this.opacity}"/>
+          <stop offset="100%" stop-color="var(--star-yellow)" stop-opacity="1"/>
           <stop offset="0%" stop-color="var(--star-placeholder)" stop-opacity="1"/>
         </linearGradient>
       </defs>
