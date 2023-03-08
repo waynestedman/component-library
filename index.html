@@ -24,12 +24,13 @@
       <div id="rate-experience" class="column">
         <h2>Rate your experience example</h2>
         <div class="card">
-          <h3><strong>We've received your registration</strong></h3>
-          <p>We value your input and would appreciate it if you took the time to rate your experience.</p> 
-          <case-rating rating="4.5" size="l" variant="Clickable"></case-rating>
+    <!-- does this h3 need to be strong for accessibility? -->
+          <h3>We've received your registration!</h3>
+          <p>We value your input and would appreciate if you took the time to rate your experience.</p> 
+          <case-rating rating="2" size="l" variant="Clickable"></case-rating>
           <form action="">
             <p><label for="productreview">Any additional comments?</label></p>
-            <textarea id="productreview" name="productreview" rows="4" cols="50">Enter your comments here</textarea>
+            <textarea id="productreview" name="productreview" rows="3" cols="50">Enter your comments here</textarea>
             <div class="options-buttons">
               <input type="submit" id="no" value="No thanks">
               <input type="submit" id="yes" value="Submit">  

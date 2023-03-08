@@ -71,7 +71,7 @@ export class RatingTooltip extends LitElement {
       middleware: [
         offset(this.offset),
         shift(),
-        autoPlacement({allowedPlacements: ['top', 'bottom']})
+        autoPlacement({allowedPlacements: ['top']})
       ],
     }).then(({x, y}: {x: number, y: number}) => {
       this.style.left = `${x}px`;
