@@ -1,3 +1,5 @@
+/* This file constructs and controls the individual star. It is an SVG that has been modified to add and expose areas for higher level functional control */
+
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
@@ -19,6 +21,7 @@ class Star extends LitElement {
   _offset: Number = 100;
   _opacity: Number = 1;
 
+  /* this method sets a size based on the size prop in the component instantiation. This size is then used by the height & width of the SVG. */
   setSize() {
     if (this.starSize == 'l') {
       this.sizeNum = 24;
@@ -37,6 +40,7 @@ render() {
     <svg width="${this.sizeNum}" height="${this.sizeNum}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="grad">
+  <!--the first stop is used to set the yellow color. The offset determines how much yellow will show. 100% = fully covered, 50% = half, 0% = no yellow. setting the opacity to 0 when there is no yellow insures there is no yellow. -->
           <stop offset="100%" stop-color="var(--star-yellow)" stop-opacity="1"/>
           <stop offset="0%" stop-color="var(--star-placeholder)" stop-opacity="1"/>
         </linearGradient>

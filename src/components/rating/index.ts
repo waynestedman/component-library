@@ -46,7 +46,7 @@ export class CaseRating extends LitElement {
       margin-left: 0.25rem;
     }
   `;
-
+// public properties
   @property()
   rating: Number = 3; // default value
 
@@ -69,7 +69,7 @@ export class CaseRating extends LitElement {
   @property()
   condition = false;
 
-
+// a method that takes the rating value and assigns which stars are fullly yellow vs half full vs no yellow 
   ratingToStars() {
     let starRating = this.rating;
     let divisor: Number = Math.trunc(starRating);
@@ -87,7 +87,7 @@ export class CaseRating extends LitElement {
   setStarStatus() {
     let fillStatus: string[] = [];
     // let starStatus = fillStatus;
-
+// Conditionally setting props for the star fill, for each instance.
     for (let i = 1; i <= 5; i++) {
       if (i <= lastFullStar) {
         fillStatus[i] = 'full';
@@ -102,6 +102,7 @@ export class CaseRating extends LitElement {
           this._opacity = 0;
           this._offset = 0;
         }
+  // checking what the offset & opacity values are as they being set in the For loop.
         console.log('for loop value: ' + this._offset);
         console.log('for loop value: ' + this._opacity);
         
@@ -111,7 +112,7 @@ export class CaseRating extends LitElement {
   ratingTemplate() {
     // let star = Array.from(document.querySelector('case-rating').shadowRoot.querySelectorAll('div.star-rating'));
     let ariaHidden: Boolean = false;
-
+// Checking if the rating is supposed to be for a product Display (not clickable). Then it makes the appropriate adjustments to clickablility and aria labeling.
     if (this.variant == 'Display') {
       this.condition = true;
       this.ariaHidden = true;
@@ -121,6 +122,7 @@ export class CaseRating extends LitElement {
     }
   
     return html`
+  <!-- this generates the whole star rating component. The offset & opacity props are a way to pass individual characteristics to the star component. -->
       <div class="star-rating" aria-describedby="This section displays a star rating" aria-hidden="false">
         <rating-star @click=${this._onClick} class="star star1" offset="100%" opacity="1" aria-hidden="${this.ariaHidden || false}"></rating-star>
         <rating-tooltip>${this.rating} / 5</rating-tooltip>
@@ -147,7 +149,7 @@ export class CaseRating extends LitElement {
 
     this.ratingToStars();
     this.setStarStatus();
-
+// checking what the offset & opacity values are right before the template is rendered.
 console.log('from render function ' + this._offset);
 console.log('from render function ' + this._opacity);
 
@@ -164,10 +166,8 @@ console.log('from render function ' + this._opacity);
       </rating-tooltip>
     `;
   }
-  // private _inputChange(e: InputEvent) {
-  //   this.name = (e.target as HTMLInputElement).value;
-  // }
 
+// This method removes the click listener. May not be needed.
   removeClick() {
     this.removeEventListener('click', this._onClick, {capture: true})
     this.clicked = false;

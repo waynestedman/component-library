@@ -1,3 +1,5 @@
+/* this is a sub-component the uses the @floating-ui/dom library to generate an enhancable tooltip. Borrowed from a Lit example. */
+
 import {html, css, LitElement} from 'lit';
 import {customElement, property } from 'lit/decorators.js';
 
