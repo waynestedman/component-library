@@ -43,6 +43,13 @@ export class CaseRating extends LitElement {
     #staticRating {
       display: inline-block;
       margin-left: 0.25rem;
+      font-size: 14px;
+      font-weight: 400;
+      color: #767676;
+    }
+    #staticRating span {
+      color: #292929;
+      font-weight: 500;
     }
   `;
 // public properties
@@ -135,7 +142,7 @@ export class CaseRating extends LitElement {
         <rating-tooltip>${this.rating} / 5</rating-tooltip>
         ${this.condition
           ? html`
-            <p id="staticRating" aria-describedby="This product's rating is ${this.rating} out of 53"><strong>${this.rating}</strong> (53)</p>
+            <p id="staticRating" aria-describedby="This product's rating is ${this.rating} out of 53"><span>${this.rating}</span> (53)</p>
           `
           : html ``}
       </div>
