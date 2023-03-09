@@ -33,8 +33,8 @@ h3 {
 
 .card {
   background-color: #fff;
-  border: 1px solid #888;
-  max-width: 552px;
+  border: 1px solid #B2B2B0;
+  max-width: 480px;
   margin-inline: auto;
   vertical-align: middle;
 }
@@ -50,13 +50,13 @@ h3 {
     img {
       display: block;
       margin-inline: auto;
-      width: 86%;
+      width: 85%;
       height: auto;
     }
     
     h3 {
       margin-block: 0.6rem 0.2rem;
-      font-size: 1rem;
+      font-size: 15px;
       font-weight: 500;
       line-height: 1.5;
       color: #222;
@@ -67,7 +67,7 @@ h3 {
       margin-bottom: 12px;
       color: var(--product-status);
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 13px;
     }
   }
 }
@@ -85,7 +85,7 @@ h3 {
       padding: 1rem;
       font-family: 'Cera Pro';
       color: #bbb;
-      font-size: 18px;
+      font-size: 16px;
       width: 94%;
       border-color: #bbb;
       border-radius: 4px;
@@ -99,16 +99,20 @@ h3 {
     .options-buttons {
       display: block;
       text-align: right;
+      margin-bottom: 8px;
 
       input {
+        font-size: 15px;
+        font-weight: 500;
+        font-family: 'Cera Pro';
         background: none;
         color: var(--button-blue);
         border: 2px solid var(--button-blue);
         border-radius: 3px;
         margin-top: 1rem;
-        padding: 0.5rem;
+        padding: 10px;
         cursor: pointer;
-        width: 80px;
+        width: 100px;
       
         &:nth-child(2){
           background-color: var(--button-inactive);

@@ -16,13 +16,14 @@ export class RatingTooltip extends LitElement {
     :host {
       display: inline-block;
       position: fixed;
-      padding: 6px;
+      padding: 13px;
       border: 1px solid darkgray;
       border-radius: var(--rating-popup-box);
       background: var(--rating-popup);
-      color: var(--star-placeholder);
+      color: #fff;
       pointer-events: none;
-      font-size: 10px;
+      font-size: 12px;
+      font-weight: 500;
     }
   `;
 
