@@ -79,10 +79,11 @@ h3 {
   .card {
     position: relative;
     padding: 0.75rem;
+    box-shadow: 0px 10px 20px -16px #888;
     
     textarea {
       padding: 1rem;
-      font-family: 'Cera Pro';;
+      font-family: 'Cera Pro';
       color: #bbb;
       font-size: 18px;
       width: 94%;
