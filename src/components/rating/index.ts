@@ -30,7 +30,6 @@ export class CaseRating extends LitElement {
       position: relative;
       display: block;
       margin-block: 0.5rem;
-      padding: 0.25rem;
       width: 200px;
     }
     .star-rating:focus {
@@ -124,7 +123,7 @@ export class CaseRating extends LitElement {
     return html`
   <!-- this generates the whole star rating component. The offset & opacity props are a way to pass individual characteristics to the star component. -->
       <div class="star-rating" aria-describedby="This section displays a star rating" aria-hidden="false">
-        <rating-star @click=${this._onClick} class="star star1" offset="100%" opacity="1" aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star @click=${this._onClick} class="star star1" offset=${this._offset} opacity="1" aria-hidden="${this.ariaHidden || false}"></rating-star>
         <rating-tooltip>${this.rating} / 5</rating-tooltip>
         <rating-star @click=${this._onClick} class="star star2" offset=${this._offset} opacity=${this._opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
         <rating-tooltip>${this.rating} / 5</rating-tooltip>
@@ -132,11 +131,11 @@ export class CaseRating extends LitElement {
         <rating-tooltip>${this.rating} / 5</rating-tooltip>
         <rating-star @click=${this._onClick} class="star star4" offset=${this._offset} opacity=${this._opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
         <rating-tooltip>${this.rating} / 5</rating-tooltip>
-        <rating-star @click=${this._onClick} class="star star5" offset=${this._offset} opacity=${this._opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
+        <rating-star @click=${this._onClick} class="star star5" offset=50% opacity=${this._opacity} aria-hidden="${this.ariaHidden || false}"></rating-star>
         <rating-tooltip>${this.rating} / 5</rating-tooltip>
         ${this.condition
           ? html`
-            <p id="staticRating" aria-describedby="This product's rating is ${this.rating} out of 5"><strong>${this.rating}</strong> (5.0)</p>
+            <p id="staticRating" aria-describedby="This product's rating is ${this.rating} out of 53"><strong>${this.rating}</strong> (53)</p>
           `
           : html ``}
       </div>
